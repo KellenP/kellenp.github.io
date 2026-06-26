@@ -48,7 +48,7 @@
     <div class="star">
       <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">I had a PDF résumé that was hard to share nicely, and the tools that make résumé pages all wanted an account and an upload.</p></div></div>
       <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Build a tool that turns a PDF into a shareable web résumé entirely on the user's side, so the data never leaves the browser.</p></div></div>
-      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Used PDF.js to parse in-browser and wrote heuristics to extract each section; rendered a themed résumé; and made sharing work with <b>zero backend</b> by compressing the data into the URL hash. In a polish pass I code-split the 2 MB PDF engine to cut the initial load ~54% and hardened the share button with a clipboard fallback.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Used PDF.js to parse in-browser and wrote heuristics to extract each section; rendered a themed résumé; and made sharing work with <b>zero backend</b> by compressing the data into the URL hash. I also code-split the 2 MB PDF engine to cut the initial load ~54% and hardened the share button with a clipboard fallback.</p></div></div>
       <div class="star-row"><div class="glyph">R</div><div><p class="t">A working, privacy-first app: "See Example" (or upload) → visual résumé → a share link that reconstructs the page on any machine with no server. Production build verified; initial JS bundle reduced from ~254&nbsp;KB to ~118&nbsp;KB gzip.</p><p class="k" style="margin-top:6px">Result</p></div></div>
     </div>
   </section>
