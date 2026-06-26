@@ -62,7 +62,8 @@
     <div class="term" style="margin-top:12px"><span class="m">MSI  SHA-256:</span> 0F69FBC8A0A23F036E5E6C4D6BCCA92ACFABA39DFA3A767DAEEB45509DD59E66<br><span class="m">NSIS SHA-256:</span> B34E8A81F93588616DB6AE919E4029B0082F42D4F1C2156DE640F51F4CF7D2B3</div>
     <p class="prose muted" style="margin-top:12px"><b>Verify, then install:</b></p>
     <div class="term"><span class="g">PS&gt;</span> Get-FileHash .\KitSmith_0.1.0_x64_en-US.msi -Algorithm SHA256   <span class="m"># compare to above</span></div>
-    <div class="actions"><a class="btn btn-ghost" href="https://github.com/Thrashable/kitsmith/releases" target="_blank" rel="noopener">Releases on GitHub ↗</a></div>
+    <p class="honest" style="margin-top:12px">Heads up: the installer isn't code-signed, so Windows SmartScreen may warn ("Windows protected your PC") — click <b>More info → Run anyway</b> if the checksum matches.</p>
+    <div class="actions"><a class="btn btn-ghost" href="https://github.com/Thrashable/kitsmith/releases/tag/v0.1.0" target="_blank" rel="noopener">Release notes on GitHub ↗</a></div>
   </section>
 
   <section>
