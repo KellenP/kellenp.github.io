@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Deal Desk — Off-Market Austin Acquisitions · Concept Build</title>
+<meta name="description" content="A private desk for serious Austin investors. Vetted off-market deals with the rehab math, comps and cap rates already run — and a licensed, fully-disclosed cash offer for sellers." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0B0D0E; --bg-2:#101315; --panel:#15181A; --panel-2:#191D1F; --raised:#1E2326;
+  --line:#23282B; --line-soft:#1b1f21;
+  --text:#E6E8E9; --muted:#9AA2A6; --faint:#5E676B;
+  --green:#26D07C; --green-deep:#11331f; --green-dim:#1c5e3a;
+  --amber:#E0A23B; --amber-dim:#3a2c12;
+  --red:#E5484D; --blue:#5B7CFF;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans); background:var(--bg); color:var(--text); line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.022) 1px, transparent 0);
+  background-size:34px 34px;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px}
+a{color:inherit; text-decoration:none}
+img{display:block; max-width:100%}
+::selection{background:var(--green); color:#04130b}
+
+/* tags / labels */
+.mono{font-family:var(--mono)}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--green); font-weight:600}
+.label{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint); font-weight:500}
+.num{font-family:var(--mono); font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+
+/* ---------- NAV ---------- */
+.nav{position:sticky; top:0; z-index:60; border-bottom:1px solid transparent; transition:background .3s, border-color .3s, backdrop-filter .3s}
+.nav.scrolled{background:rgba(11,13,14,.72); backdrop-filter:blur(14px) saturate(140%); border-bottom:1px solid var(--line)}
+.nav-in{display:flex; align-items:center; justify-content:space-between; height:70px}
+.brand{display:flex; align-items:center; gap:12px}
+.brand .mark{width:11px; height:11px; background:var(--green); border-radius:2px; box-shadow:0 0 0 4px rgba(38,208,124,.14); transform:rotate(45deg)}
+.brand .bt{font-family:var(--mono); font-weight:700; letter-spacing:.12em; font-size:13px; text-transform:uppercase}
+.brand .bs{font-size:11px; color:var(--faint); border-left:1px solid var(--line); padding-left:12px; margin-left:2px; letter-spacing:.02em}
+.nav-links{display:flex; align-items:center; gap:30px}
+.nav-links a{font-size:13.5px; color:var(--muted); transition:color .2s; position:relative}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:""; position:absolute; left:0; bottom:-6px; height:1px; width:0; background:var(--green); transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-weight:600; font-size:13.5px; cursor:pointer; border:none; transition:transform .15s, background .2s, box-shadow .2s}
+.btn-primary{background:var(--green); color:#04130b; padding:11px 20px; border-radius:8px; box-shadow:0 6px 24px -8px rgba(38,208,124,.5)}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(38,208,124,.65)}
+.btn-ghost{background:transparent; color:var(--text); padding:11px 20px; border-radius:8px; border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--faint); transform:translateY(-2px)}
+.nav .btn-primary{padding:10px 18px}
+.menu-toggle{display:none}
+
+/* ---------- HERO ---------- */
+.hero{position:relative; padding:72px 0 40px}
+.hero::before{content:""; position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:920px; height:520px; background:radial-gradient(ellipse at center, rgba(38,208,124,.10), transparent 62%); pointer-events:none; filter:blur(8px)}
+.hero-grid{display:grid; grid-template-columns:1.18fr .82fr; gap:54px; align-items:center; position:relative}
+.hero h1{font-family:var(--display); font-weight:500; font-size:clamp(2.7rem,5.6vw,4.6rem); line-height:1.02; letter-spacing:-.02em; margin:22px 0 0}
+.hero h1 em{font-style:italic; color:var(--green)}
+.hero .sub{font-size:17px; color:var(--muted); max-width:46ch; margin-top:24px; line-height:1.62}
+.hero .cta-row{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap}
+.hero .btn{padding:14px 24px; font-size:14.5px}
+.trustline{margin-top:30px; display:flex; align-items:center; gap:14px; color:var(--faint); font-size:12.5px}
+.trustline .dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+
+/* deal ticket terminal */
+.ticket{background:linear-gradient(180deg,var(--panel),#0e1113); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:0 40px 80px -40px rgba(0,0,0,.8); position:relative}
+.ticket-top{display:flex; align-items:center; justify-content:space-between; padding:13px 16px; border-bottom:1px solid var(--line); background:rgba(255,255,255,.012)}
+.ticket-top .dots{display:flex; gap:6px}
+.ticket-top .dots i{width:9px;height:9px;border-radius:50%;background:#2a3034; display:block}
+.ticket-live{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--green); display:flex; align-items:center; gap:7px}
+.ticket-live .pulse{width:7px;height:7px;border-radius:50%;background:var(--green); animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(38,208,124,.5)}50%{opacity:.55;box-shadow:0 0 0 5px rgba(38,208,124,0)}}
+.ticket-body{padding:20px 20px 22px}
+.ticket-addr{display:flex; align-items:baseline; justify-content:space-between; gap:10px}
+.ticket-addr .a{font-family:var(--mono); font-size:13px; color:var(--text); letter-spacing:.02em}
+.ticket-addr .badge{font-family:var(--mono); font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--green); border:1px solid var(--green-dim); background:var(--green-deep); padding:3px 8px; border-radius:5px}
+.ticket .spec{color:var(--faint); font-size:12px; margin-top:5px; font-family:var(--mono)}
+.ticket-rows{margin-top:18px; display:grid; gap:0}
+.trow{display:flex; align-items:center; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft)}
+.trow:last-child{border-bottom:none}
+.trow .k{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-family:var(--mono)}
+.trow .v{font-family:var(--mono); font-size:14px; font-weight:600; font-variant-numeric:tabular-nums}
+.trow .v.green{color:var(--green)}
+.ticket-foot{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; font-family:var(--mono); font-size:11px; color:var(--faint)}
+.ticket-foot .chk{color:var(--green)}
+
+/* ---------- TICKER MARQUEE ---------- */
+.ticker{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-2); overflow:hidden; margin-top:46px}
+.ticker-track{display:flex; gap:0; width:max-content; animation:scroll 42s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.tk{display:flex; align-items:center; gap:11px; padding:14px 30px; border-right:1px solid var(--line); white-space:nowrap; font-family:var(--mono); font-size:12px; color:var(--muted)}
+.tk b{color:var(--text); font-weight:600}
+.tk .up{color:var(--green)}
+.tk .dn{color:var(--red)}
+.tk .sym{color:var(--faint); font-size:10px; letter-spacing:.1em}
+
+/* ---------- SECTION SHELL ---------- */
+section{position:relative}
+.sec{padding:96px 0}
+.sec-head{max-width:680px; margin-bottom:46px}
+.sec-head.center{margin-left:auto; margin-right:auto; text-align:center}
+.sec-head h2{font-family:var(--display); font-weight:500; font-size:clamp(2rem,3.6vw,3rem); line-height:1.08; letter-spacing:-.02em; margin-top:16px}
+.sec-head h2 em{font-style:italic; color:var(--green)}
+.sec-head p{color:var(--muted); font-size:16px; margin-top:16px; line-height:1.62}
+.divider{height:1px; background:var(--line); width:100%}
+
+/* ---------- TWO DOORS ---------- */
+.doors{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+.door{border:1px solid var(--line); border-radius:16px; padding:34px 32px; background:linear-gradient(180deg,var(--panel),#0d1011); position:relative; overflow:hidden; transition:border-color .3s, transform .3s}
+.door:hover{border-color:var(--green-dim); transform:translateY(-4px)}
+.door::after{content:""; position:absolute; right:-40px; top:-40px; width:160px; height:160px; background:radial-gradient(circle,rgba(38,208,124,.07),transparent 70%)}
+.door .dk{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--green)}
+.door h3{font-family:var(--display); font-size:27px; font-weight:500; margin:14px 0 10px; letter-spacing:-.01em}
+.door p{color:var(--muted); font-size:14.5px; max-width:40ch}
+.door ul{list-style:none; margin:20px 0 26px; display:grid; gap:10px}
+.door li{font-size:13.5px; color:var(--text); padding-left:22px; position:relative}
+.door li::before{content:"→"; position:absolute; left:0; color:var(--green); font-family:var(--mono)}
+.door .btn{font-size:13.5px}
+
+/* ---------- DEAL FEED ---------- */
+.feed-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:26px}
+.filters{display:flex; gap:8px; flex-wrap:wrap}
+.chip{font-family:var(--mono); font-size:11.5px; letter-spacing:.04em; color:var(--muted); border:1px solid var(--line); background:var(--panel); padding:7px 14px; border-radius:30px; cursor:pointer; transition:all .2s}
+.chip:hover{border-color:var(--faint); color:var(--text)}
+.chip.active{background:var(--green); color:#04130b; border-color:var(--green); font-weight:600}
+.feed{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--panel)}
+.feed-row-head, .feed-row{display:grid; grid-template-columns:2.4fr 1fr 1fr 1fr 1fr 1.1fr; gap:14px; align-items:center; padding:0 22px}
+.feed-row-head{height:46px; border-bottom:1px solid var(--line); background:rgba(255,255,255,.012)}
+.feed-row-head span{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--faint)}
+.feed-row-head span.r, .feed-row .r{text-align:right; justify-self:end}
+.feed-row{height:70px; border-bottom:1px solid var(--line-soft); cursor:pointer; transition:background .18s; position:relative}
+.feed-row:last-child{border-bottom:none}
+.feed-row:hover{background:rgba(38,208,124,.04)}
+.feed-row:hover::before{content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--green)}
+.fr-prop{display:flex; align-items:center; gap:14px; min-width:0}
+.fr-thumb{width:46px; height:46px; border-radius:8px; flex-shrink:0; border:1px solid var(--line); background-size:cover; background-position:center; position:relative; overflow:hidden}
+.fr-thumb::after{content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(38,208,124,.10),transparent 60%)}
+.fr-meta .a{font-family:var(--mono); font-size:13px; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.fr-meta .s{font-size:11.5px; color:var(--faint); margin-top:2px}
+.fr-strat{font-family:var(--mono); font-size:12px; color:var(--muted)}
+.fr-num{font-family:var(--mono); font-size:13.5px; font-variant-numeric:tabular-nums; text-align:right; justify-self:end}
+.fr-num.profit{color:var(--green); font-weight:600}
+.fr-status{justify-self:end}
+.status{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; padding:4px 9px; border-radius:5px; white-space:nowrap}
+.status.new{color:var(--green); background:var(--green-deep); border:1px solid var(--green-dim)}
+.status.uc{color:var(--amber); background:var(--amber-dim); border:1px solid #5a4418}
+.status.assigned{color:var(--faint); background:#1a1d1f; border:1px solid var(--line)}
+.feed-foot{display:flex; align-items:center; justify-content:space-between; padding:16px 22px; border-top:1px solid var(--line); background:rgba(255,255,255,.012); font-size:12.5px; color:var(--muted)}
+.feed-foot .lock{font-family:var(--mono); font-size:11.5px; color:var(--faint); display:flex; align-items:center; gap:8px}
+
+/* ---------- DEAL MEMO ---------- */
+.memo-wrap{display:grid; grid-template-columns:.95fr 1.05fr; gap:48px; align-items:center}
+.memo{border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--panel); box-shadow:0 40px 90px -50px rgba(0,0,0,.9)}
+.memo-img{height:204px; background:#0e1416; position:relative; border-bottom:1px solid var(--line); overflow:hidden}
+.memo-img .ph{position:absolute; inset:0; display:flex; align-items:flex-end; padding:16px; z-index:2}
+.memo-img .cover{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.96) contrast(1.02)}
+.memo-img .memo-shade{position:absolute; inset:0; background:linear-gradient(180deg,rgba(11,13,14,.12),rgba(11,13,14,.55) 55%,rgba(11,13,14,.82))}
+.memo-img .tag{position:relative; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#cfe9da; background:rgba(7,19,11,.7); border:1px solid var(--green-dim); padding:5px 10px; border-radius:6px; backdrop-filter:blur(4px)}
+.memo-h{display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--line)}
+.memo-h .t{font-family:var(--mono); font-size:12px; letter-spacing:.04em}
+.memo-h .badge{font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--green); border:1px solid var(--green-dim); padding:3px 8px; border-radius:5px}
+.memo-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line)}
+.mg{background:var(--panel); padding:16px 20px}
+.mg .k{font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint)}
+.mg .v{font-family:var(--mono); font-size:19px; font-weight:600; font-variant-numeric:tabular-nums; margin-top:7px}
+.mg .v.green{color:var(--green)}
+.mg.full{grid-column:1/3; display:flex; align-items:center; justify-content:space-between}
+.mg.full .chkline{display:flex; align-items:center; gap:9px; color:var(--green); font-family:var(--mono); font-size:13px}
+.memo-bars{display:flex; align-items:flex-end; gap:5px; height:34px}
+.memo-bars i{width:7px; background:var(--green-dim); border-radius:2px 2px 0 0; display:block}
+.memo-bars i.hi{background:var(--green)}
+.memo-side h3{font-family:var(--display); font-weight:500; font-size:clamp(1.9rem,3vw,2.6rem); line-height:1.1; letter-spacing:-.02em}
+.memo-side h3 em{font-style:italic;color:var(--green)}
+.memo-side p{color:var(--muted); font-size:15.5px; margin-top:18px; line-height:1.62}
+.memo-side .pts{list-style:none; margin-top:22px; display:grid; gap:14px}
+.memo-side .pts li{display:flex; gap:13px; font-size:14px; color:var(--text)}
+.memo-side .pts .ic{flex-shrink:0; width:26px; height:26px; border-radius:7px; background:var(--green-deep); border:1px solid var(--green-dim); color:var(--green); display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:13px}
+
+/* ---------- FULL-BLEED BAND ---------- */
+.band{position:relative; min-height:340px; display:flex; align-items:center; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.band .cover{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.8) brightness(.5)}
+.band::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(11,13,14,.95) 0%,rgba(11,13,14,.6) 52%,rgba(11,13,14,.82) 100%)}
+.band .band-in{position:relative; z-index:2; max-width:var(--maxw); margin:0 auto; padding:0 32px; width:100%}
+.band h2{font-family:var(--display); font-weight:500; font-size:clamp(1.9rem,3.6vw,3rem); line-height:1.08; letter-spacing:-.02em; max-width:17ch; margin-top:14px}
+.band h2 em{font-style:italic; color:var(--green)}
+.band p{color:var(--muted); margin-top:15px; max-width:50ch; font-size:15px; line-height:1.6}
+
+/* ---------- INTEL ---------- */
+.intel{background:linear-gradient(180deg,#0d1011,var(--bg)); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.intel-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:54px; align-items:center}
+.intel-side .big{font-family:var(--mono); font-size:clamp(3.4rem,7vw,5.4rem); font-weight:700; line-height:1; letter-spacing:-.03em; color:var(--green)}
+.intel-side .big small{font-size:1.4rem; color:var(--green); vertical-align:super; margin-left:6px}
+.intel-side .cap{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:6px}
+.chart-card{border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:24px}
+.chart-card .ch-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px}
+.chart-card .ch-top .t{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.04em}
+.chart-card .ch-top .lg{font-family:var(--mono); font-size:11px; color:var(--green)}
+.statline{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:34px}
+.statline .s{background:var(--panel); padding:20px 18px}
+.statline .s .v{font-family:var(--mono); font-size:22px; font-weight:600; font-variant-numeric:tabular-nums}
+.statline .s .v.green{color:var(--green)}
+.statline .s .k{font-size:11px; color:var(--faint); margin-top:6px; font-family:var(--mono); letter-spacing:.04em; text-transform:uppercase}
+
+/* ---------- HOW ---------- */
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; counter-reset:s}
+.step{border:1px solid var(--line); border-radius:14px; padding:30px 28px; background:var(--panel); position:relative; transition:transform .3s, border-color .3s}
+.step:hover{transform:translateY(-4px); border-color:var(--green-dim)}
+.step .sn{font-family:var(--mono); font-size:12px; color:var(--green); letter-spacing:.1em}
+.step h3{font-family:var(--display); font-size:23px; font-weight:500; margin:16px 0 10px}
+.step p{color:var(--muted); font-size:14px}
+.step .line{width:34px; height:2px; background:var(--green); margin:18px 0 0}
+
+/* ---------- PROOF ---------- */
+.proof{text-align:center}
+.proof .badge-row{display:inline-flex; align-items:center; gap:12px; border:1px solid var(--green-dim); background:var(--green-deep); border-radius:40px; padding:9px 18px; margin-bottom:30px}
+.proof .badge-row .star{color:var(--green)}
+.proof .badge-row span{font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:#cfe9da}
+.proof-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden; margin-top:8px}
+.pcell{background:var(--bg); padding:38px 24px}
+.pcell .v{font-family:var(--mono); font-size:clamp(2.2rem,4vw,3.2rem); font-weight:700; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.pcell .v .suf{color:var(--green)}
+.pcell .k{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-top:10px}
+.proof .note{font-family:var(--mono); font-size:11px; color:var(--faint); margin-top:18px; letter-spacing:.04em}
+
+/* ---------- COMPLIANCE ---------- */
+.comply{border:1px solid var(--line); border-radius:18px; background:linear-gradient(135deg,#0e1413,#0c0f10); padding:48px 44px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; position:relative; overflow:hidden}
+.comply::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg,var(--green),transparent)}
+.comply h3{font-family:var(--display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:500; line-height:1.1; letter-spacing:-.02em}
+.comply h3 em{font-style:italic; color:var(--green)}
+.comply p{color:var(--muted); font-size:14.5px; margin-top:16px; max-width:42ch}
+.comply .cl{list-style:none; display:grid; gap:12px}
+.comply .cl li{display:flex; gap:12px; align-items:flex-start; font-size:13px; color:var(--text); font-family:var(--mono); line-height:1.5}
+.comply .cl .ic{color:var(--green); flex-shrink:0}
+.comply .cl b{color:var(--text); font-weight:600}
+
+/* ---------- CTA FORMS ---------- */
+.cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+.form-card{border:1px solid var(--line); border-radius:16px; padding:34px 32px; background:var(--panel)}
+.form-card.buyer{background:linear-gradient(180deg,#0f1614,#0d1011); border-color:var(--green-dim)}
+.form-card .fk{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--green)}
+.form-card h3{font-family:var(--display); font-size:26px; font-weight:500; margin:12px 0 8px}
+.form-card p{color:var(--muted); font-size:14px; margin-bottom:22px}
+.field{margin-bottom:13px}
+.field input, .field select{width:100%; background:var(--bg); border:1px solid var(--line); border-radius:9px; padding:13px 15px; color:var(--text); font-family:var(--sans); font-size:14px; transition:border-color .2s}
+.field input:focus, .field select:focus{outline:none; border-color:var(--green)}
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:13px}
+.form-card .btn{width:100%; justify-content:center; margin-top:8px; padding:14px}
+.form-note{font-family:var(--mono); font-size:11px; color:var(--faint); margin-top:14px; text-align:center}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line); background:var(--bg-2); padding:64px 0 36px; margin-top:30px}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid var(--line)}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{color:var(--muted); font-size:13px; max-width:34ch; line-height:1.6}
+.foot-col h4{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:16px}
+.foot-col a{display:block; color:var(--muted); font-size:13.5px; margin-bottom:10px; transition:color .2s}
+.foot-col a:hover{color:var(--green)}
+.legal{padding-top:26px; display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap}
+.legal p{font-family:var(--mono); font-size:11px; color:var(--faint); line-height:1.7; max-width:62ch}
+.legal .eho{display:flex; align-items:center; gap:8px; color:var(--faint); font-size:11px; font-family:var(--mono)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1; transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .hero-grid,.memo-wrap,.intel-grid,.comply,.cta-grid{grid-template-columns:1fr; gap:36px}
+  .doors,.steps,.statline,.proof-grid,.foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hero .ticket{max-width:460px}
+}
+@media(max-width:680px){
+  .wrap{padding:0 20px}
+  .sec{padding:70px 0}
+  .doors,.steps,.proof-grid,.statline,.foot-grid,.field-row{grid-template-columns:1fr}
+  .feed-row-head{display:none}
+  .feed-row{display:flex; flex-wrap:wrap; align-items:baseline; height:auto; padding:15px 16px; gap:6px 16px}
+  .feed-row .fr-prop{flex:1 1 100%; margin-bottom:6px}
+  .feed-row .fr-strat, .feed-row .col-cap{display:none}
+  .feed-row .fr-num{font-size:12.5px; justify-self:auto}
+  .feed-row .fr-num.r:not(.profit)::before{content:"ARV "; color:var(--faint); font-size:9px; letter-spacing:.08em}
+  .feed-row .fr-num.profit::before{content:"PROFIT "; color:var(--faint); font-size:9px; letter-spacing:.08em}
+  .feed-row .fr-status{margin-left:auto; justify-self:auto}
+  .hero h1{font-size:2.5rem}
+  .legal{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="mark"></span>
+      <span class="bt">Deal&nbsp;Desk</span>
+      <span class="bs">Off-Market Austin · Acquisitions &amp; Dispositions</span>
+    </a>
+    <div class="nav-links">
+      <a href="#deals">Live deals</a>
+      <a href="#memo">Underwriting</a>
+      <a href="#intel">Austin intel</a>
+      <a href="#sell">Sell a property</a>
+      <a href="#buyers" class="btn btn-primary">Join the buyer list</a>
+    </div>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal">Austin — off-market acquisitions &amp; dispositions</div>
+      <h1 class="reveal d1">Off-market Austin deals,<br><em>underwritten to close.</em></h1>
+      <p class="sub reveal d2">A private desk for serious investors. Every distressed deal arrives with the rehab math, comps and cap rate already run — sent to a short list of buyers who actually close. Sellers get a fast, fully-disclosed cash offer from a licensed agent. No bandit signs. No games.</p>
+      <div class="cta-row reveal d3">
+        <a href="#buyers" class="btn btn-primary">Get first look at deals ↗</a>
+        <a href="#sell" class="btn btn-ghost">Sell a distressed property</a>
+      </div>
+      <div class="trustline reveal d3"><span class="dot"></span> Licensed-agent model · Travis · Williamson · Hays · Bastrop</div>
+    </div>
+
+    <div class="ticket reveal d2" aria-label="Sample live deal">
+      <div class="ticket-top">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="ticket-live"><span class="pulse"></span> Live · 1 of 7 on the desk</div>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-addr">
+          <span class="a">78724 · East Austin</span>
+          <span class="badge">New</span>
+        </div>
+        <div class="spec">3 bd · 2 ba · 1,180 sf · built 1972 · cosmetic + roof</div>
+        <div class="ticket-rows">
+          <div class="trow"><span class="k">ARV (comped)</span><span class="v">$385,000</span></div>
+          <div class="trow"><span class="k">Rehab budget</span><span class="v">$62,000</span></div>
+          <div class="trow"><span class="k">Your price</span><span class="v">$238,000</span></div>
+          <div class="trow"><span class="k">Projected flip profit</span><span class="v green">$54,500</span></div>
+          <div class="trow"><span class="k">Rental cap rate</span><span class="v">6.4%</span></div>
+        </div>
+        <div class="ticket-foot">
+          <span><span class="chk">✓</span> 70% rule · comps + scope attached</span>
+          <span>ID&nbsp;ATX-0418</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker">
+      <!-- duplicated in JS for seamless loop -->
+    </div>
+  </div>
+</header>
+
+<!-- TWO DOORS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Two ways in</div>
+      <h2>One desk. <em>Both sides</em> of the deal.</h2>
+      <p>Most "we buy houses" sites only chase sellers. This desk runs both sides like a trading floor — sourcing distressed deals and placing them with a vetted list of cash buyers.</p>
+    </div>
+    <div class="doors">
+      <div class="door reveal">
+        <div class="dk">For investors</div>
+        <h3>First look at vetted off-market deals</h3>
+        <p>Get on a short, private buyer list and see deals before they ever hit the shared blast — with the numbers already run.</p>
+        <ul>
+          <li>Full memo: ARV, rehab scope, comps, cap rate, projected profit</li>
+          <li>Matched to your buy box — ZIP, strategy, price band</li>
+          <li>Numbers built to survive your inspection, not to be re-traded</li>
+        </ul>
+        <a href="#buyers" class="btn btn-primary">Join the buyer list</a>
+      </div>
+      <div class="door reveal d1">
+        <div class="dk">For sellers</div>
+        <h3>A fast, fair, fully-disclosed cash offer</h3>
+        <p>Behind on payments, inherited a property, or just need out fast? Get a straight cash offer from a licensed agent — no obligation.</p>
+        <ul>
+          <li>Cash offer in 24 hours, close on your timeline</li>
+          <li>Any condition — fixer-upper, as-is, probate, distressed</li>
+          <li>Licensed &amp; disclosed under Texas law — you always know who you're dealing with</li>
+        </ul>
+        <a href="#sell" class="btn btn-ghost">Get a cash offer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEAL FEED -->
+<section class="sec" id="deals" style="padding-top:24px">
+  <div class="wrap">
+    <div class="feed-head reveal">
+      <div>
+        <div class="eyebrow">The desk · live inventory</div>
+        <h2 style="font-family:var(--display);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.8rem);letter-spacing:-.02em;margin-top:14px;line-height:1.08">Off-market deals, on the board.</h2>
+      </div>
+      <div class="filters" id="filters">
+        <button class="chip active" data-f="all">All</button>
+        <button class="chip" data-f="flip">Flip</button>
+        <button class="chip" data-f="rental">Rental / BRRRR</button>
+        <button class="chip" data-f="78702">78702</button>
+        <button class="chip" data-f="round-rock">Round Rock</button>
+        <button class="chip" data-f="kyle">Kyle</button>
+      </div>
+    </div>
+
+    <div class="feed reveal d1">
+      <div class="feed-row-head">
+        <span>Property</span><span>Strategy</span><span class="r">ARV</span><span class="r col-cap">Rehab</span><span class="r">Proj. profit</span><span class="r">Status</span>
+      </div>
+      <div id="feedRows">
+        <!-- rows injected -->
+      </div>
+      <div class="feed-foot">
+        <span class="lock">🔒 Full address, photos &amp; memo unlock for buyer-list members</span>
+        <a href="#buyers" style="color:var(--green);font-family:var(--mono);font-size:12.5px">Unlock the board →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEAL MEMO -->
+<section class="sec" id="memo">
+  <div class="wrap memo-wrap">
+    <div class="memo reveal">
+      <div class="memo-img">
+        <img class="cover" src="assets/img/interior.jpg" alt="Renovated Austin interior" loading="lazy" />
+        <span class="memo-shade"></span>
+        <div class="ph"><span class="tag">Deal memo · ATX-0418 · 78724</span></div>
+      </div>
+      <div class="memo-h">
+        <span class="t">Underwriting summary</span>
+        <span class="badge">Inspection-proof</span>
+      </div>
+      <div class="memo-grid">
+        <div class="mg"><div class="k">ARV (4 comps)</div><div class="v">$385,000</div></div>
+        <div class="mg"><div class="k">Rehab budget</div><div class="v">$62,000</div></div>
+        <div class="mg"><div class="k">Acquisition</div><div class="v">$238,000</div></div>
+        <div class="mg"><div class="k">Projected profit</div><div class="v green">$54,500</div></div>
+        <div class="mg"><div class="k">Rent comp / mo</div><div class="v">$2,250</div></div>
+        <div class="mg"><div class="k">Cap rate</div><div class="v">6.4%</div></div>
+        <div class="mg full">
+          <div class="chkline"><span>✓</span> Passes the 70% rule at $238k</div>
+          <div class="memo-bars"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i class="hi" style="height:80%"></i><i style="height:62%"></i><i class="hi" style="height:72%"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="memo-side">
+      <div class="eyebrow reveal">Underwriting is the product</div>
+      <h3 class="reveal d1">The numbers your buyer <em>can't re-trade</em> at inspection.</h3>
+      <p class="reveal d2">In a softer Austin market, deals don't die at contract — they die at the inspection, when the rehab number was wrong. Every deal on this desk ships with the repair scope and the comps that justify it, so a buyer commits with confidence and closes on time.</p>
+      <ul class="pts">
+        <li class="reveal d2"><span class="ic">①</span><div><b>Real comps, not guesses.</b> ARV backed by four recent, like-kind sales in the same submarket.</div></li>
+        <li class="reveal d3"><span class="ic">②</span><div><b>Scoped rehab.</b> A line-item repair budget so the flip math holds when the inspector shows up.</div></li>
+        <li class="reveal d3"><span class="ic">③</span><div><b>Both exits modeled.</b> Flip profit <em>and</em> rental cap rate, because your buyers run different playbooks.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- INTEL -->
+<section class="sec intel" id="intel">
+  <div class="wrap intel-grid">
+    <div class="intel-side">
+      <div class="eyebrow reveal">The Austin off-market report · weekly</div>
+      <div class="big reveal d1"><span class="countup" data-to="2483" data-comma="1">0</span></div>
+      <div class="cap reveal d1">Distressed ATX properties · <span style="color:var(--green)">▲ 13% in 5 months</span></div>
+      <p class="reveal d2" style="color:var(--muted);font-size:15.5px;margin-top:22px;max-width:42ch;line-height:1.62">Pre-foreclosure, auction and REO supply is climbing while buyers turn cautious. The desk reads the data every week so you're sourcing where the distress actually is — and pricing for a market that's moving.</p>
+      <a href="#buyers" class="btn btn-ghost reveal d2" style="margin-top:24px">Get the weekly report</a>
+    </div>
+    <div>
+      <div class="chart-card reveal d1">
+        <div class="ch-top"><span class="t">ATX distressed inventory · rolling</span><span class="lg">● pre-foreclosure + auction + REO</span></div>
+        <svg viewBox="0 0 520 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" aria-label="Rising distressed inventory">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#26D07C" stop-opacity="0.34"/>
+              <stop offset="100%" stop-color="#26D07C" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="#23282B" stroke-width="1">
+            <line x1="0" y1="40" x2="520" y2="40"/><line x1="0" y1="90" x2="520" y2="90"/>
+            <line x1="0" y1="140" x2="520" y2="140"/><line x1="0" y1="190" x2="520" y2="190"/>
+          </g>
+          <path d="M10,150 C90,140 130,128 200,120 C270,112 320,96 390,80 C440,68 480,58 510,52 L510,190 L10,190 Z" fill="url(#g)"/>
+          <path d="M10,150 C90,140 130,128 200,120 C270,112 320,96 390,80 C440,68 480,58 510,52" fill="none" stroke="#26D07C" stroke-width="2.5"/>
+          <circle cx="10" cy="150" r="3.5" fill="#26D07C"/><circle cx="200" cy="120" r="3.5" fill="#26D07C"/>
+          <circle cx="390" cy="80" r="3.5" fill="#26D07C"/><circle cx="510" cy="52" r="4.5" fill="#26D07C"/>
+          <g font-family="JetBrains Mono" font-size="10" fill="#5E676B">
+            <text x="8" y="178">Sep '25</text><text x="180" y="178">Jan '26</text><text x="370" y="178">Mar '26</text>
+          </g>
+          <g font-family="JetBrains Mono" font-size="11" fill="#26D07C"><text x="452" y="44">2,483</text></g>
+        </svg>
+        <div class="statline">
+          <div class="s"><div class="v green">52%</div><div class="k">Listings cutting price</div></div>
+          <div class="s"><div class="v">~71</div><div class="k">Days on market</div></div>
+          <div class="s"><div class="v">~6.0</div><div class="k">Months of supply</div></div>
+          <div class="s"><div class="v">~1%</div><div class="k">Austin flip ROI · Q1'25</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow">How the desk works</div>
+      <h2>Source. Underwrite. <em>Match.</em></h2>
+      <p>A repeatable engine, not a pile of leads. Each deal moves through the same three gates before it reaches a buyer.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="sn">/ 01</div><h3>Source off-market</h3><p>Distressed and motivated sellers across Travis, Williamson, Hays and Bastrop — found before they ever list, and put under contract right.</p><div class="line"></div></div>
+      <div class="step reveal d1"><div class="sn">/ 02</div><h3>Underwrite tight</h3><p>ARV from real comps, a scoped rehab budget, both flip and rental exits — packaged into a memo that survives inspection.</p><div class="line"></div></div>
+      <div class="step reveal d2"><div class="sn">/ 03</div><h3>Match to a closer</h3><p>The deal goes to the vetted buyers whose buy box it fits — first, and privately — so it closes fast at a fair spread.</p><div class="line"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL-BLEED BAND -->
+<section class="band">
+  <img class="cover" src="assets/img/street.jpg" alt="Austin-area residential street" loading="lazy" />
+  <div class="band-in reveal">
+    <div class="eyebrow">Boots on the ground</div>
+    <h2>Sourced block by block — <em>before they list.</em></h2>
+    <p>Travis, Williamson, Hays and Bastrop. The desk finds distressed and motivated owners early, so your deals come from real relationships on the ground — not a feed every other investor is already bidding on.</p>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="sec proof">
+  <div class="wrap">
+    <div class="badge-row reveal"><span class="star">★</span><span>Investor-grade underwriting · illustrative sample data</span></div>
+    <div class="proof-grid reveal d1">
+      <div class="pcell"><div class="v"><span class="countup" data-to="9">0</span></div><div class="k">Avg days to assign</div></div>
+      <div class="pcell"><div class="v"><span class="countup" data-to="140">0</span><span class="suf">+</span></div><div class="k">Vetted cash buyers</div></div>
+      <div class="pcell"><div class="v"><span class="suf">$</span><span class="countup" data-to="13" data-suffix="k">0</span><span class="suf">+</span></div><div class="k">Typical assignment fee</div></div>
+      <div class="pcell"><div class="v"><span class="countup" data-to="27">0</span><span class="suf">%</span></div><div class="k">Avg distressed discount</div></div>
+    </div>
+    <div class="note reveal d1">All figures are illustrative sample data · Austin market context drawn from public housing data (2026)</div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="sec" style="padding-top:20px">
+  <div class="wrap">
+    <div class="comply reveal">
+      <div>
+        <div class="eyebrow">Licensed. Disclosed. No games.</div>
+        <h3>The <em>legitimate</em> way to do off-market.</h3>
+        <p>Most "cash for houses" operators aren't licensed and don't tell you what they're doing. This desk is run by a licensed Texas agent and built to the letter of the law — which protects the seller, the buyer, and the deal.</p>
+      </div>
+      <ul class="cl">
+        <li><span class="ic">✓</span><div><b>Equitable-interest disclosure</b> to seller &amp; buyer, per Texas Property Code §5.0205.</div></li>
+        <li><span class="ic">✓</span><div><b>Broker-identified advertising</b> &amp; IABS / Consumer Protection Notice, per TREC §535.155.</div></li>
+        <li><span class="ic">✓</span><div><b>A real licensed agent</b> on every transaction — not an anonymous wholesaler.</div></li>
+        <li><span class="ic">✓</span><div><b>Equal Housing Opportunity.</b> Honest numbers, no pressure tactics.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORMS -->
+<section class="sec" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="form-card buyer reveal" id="buyers">
+        <div class="fk">For investors</div>
+        <h3>Get on the buyer list</h3>
+        <p>Tell us your buy box. Get matched off-market deals — with the numbers already run — before anyone else.</p>
+        <form onsubmit="demoSubmit(event,'buyer')">
+          <div class="field"><input required placeholder="Full name" /></div>
+          <div class="field"><input required type="email" placeholder="Email" /></div>
+          <div class="field-row">
+            <div class="field"><select><option>Strategy: Flip</option><option>Strategy: Rental / BRRRR</option><option>Strategy: Both</option></select></div>
+            <div class="field"><input placeholder="Target ZIPs (e.g. 78702)" /></div>
+          </div>
+          <div class="field"><select><option>Price band: up to $300k</option><option>$300k–$500k</option><option>$500k+</option><option>All cash, any price</option></select></div>
+          <button class="btn btn-primary" type="submit">Get first look ↗</button>
+          <div class="form-note">Private list · no spam · unsubscribe anytime</div>
+        </form>
+      </div>
+
+      <div class="form-card reveal d1" id="sell">
+        <div class="fk">For sellers</div>
+        <h3>Get a cash offer</h3>
+        <p>Any condition, any situation. A straight, fully-disclosed cash offer from a licensed agent — usually within 24 hours.</p>
+        <form onsubmit="demoSubmit(event,'seller')">
+          <div class="field"><input required placeholder="Full name" /></div>
+          <div class="field"><input required placeholder="Phone" /></div>
+          <div class="field"><input required placeholder="Property address" /></div>
+          <div class="field"><select><option>Condition: needs work / as-is</option><option>Condition: livable</option><option>Condition: not sure</option></select></div>
+          <button class="btn btn-ghost" type="submit" style="border-color:var(--green-dim);color:var(--green)">Get my cash offer</button>
+          <div class="form-note">No obligation · no fees · you choose the close date</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top"><span class="mark"></span><span class="bt">Deal&nbsp;Desk</span></a>
+        <p>Off-market acquisitions &amp; dispositions for Austin investors — a concept build of an investor-grade deal terminal. Sample data throughout.</p>
+      </div>
+      <div class="foot-col">
+        <h4>The desk</h4>
+        <a href="#deals">Live deals</a>
+        <a href="#memo">Underwriting</a>
+        <a href="#intel">Austin intel</a>
+        <a href="#buyers">Join the buyer list</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="#sell">Sell a property</a>
+        <a href="tel:#">Call the desk</a>
+        <a href="mailto:#">Email the desk</a>
+        <a href="#">IABS notice</a>
+      </div>
+    </div>
+    <div class="legal">
+      <p>
+        The Deal Desk · a concept build &amp; interactive demo — part of Kellen Poole's portfolio. A design study for a compliant, licensed off-market real-estate desk, modeling equitable-interest disclosure per Tex. Property Code §5.0205 and broker-identified advertising per TREC §535.155.
+        All names, brokerages, deals, addresses, and figures shown are fictional sample data. Not a real listing service and not an offer to buy or sell property.
+      </p>
+      <span class="eho">⌂ Equal Housing Opportunity</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ----- ticker content ----- */
+(function(){
+  const items = [
+    ['DISTRESSED ATX','2,483','up','▲ 13% / 5mo'],
+    ['LISTINGS CUTTING PRICE','52%','dn','buyer’s market'],
+    ['DAYS ON MARKET','~71','','slow'],
+    ['MONTHS OF SUPPLY','~6.0','',''],
+    ['AUSTIN FLIP ROI','~1%','dn','Q1 ’25'],
+    ['FORECLOSURE DISCOUNT','~27%','up','avg'],
+    ['PURCHASE CANCELLATIONS','15.5%','up','Aug ’25'],
+    ['CASH SHARE OF SALES','~33%','','']
+  ];
+  const make = () => items.map(([k,v,dir,note])=>
+    `<div class="tk"><span class="sym">${k}</span> <b>${v}</b> ${dir?`<span class="${dir==='up'?'up':'dn'}">${dir==='up'?'▲':'▼'}</span>`:''} ${note?`<span class="sym">${note}</span>`:''}</div>`
+  ).join('');
+  const t = document.getElementById('ticker');
+  if(t) t.innerHTML = make() + make();
+})();
+
+/* ----- deal feed ----- */
+const deals = [
+  {a:'78724 · East Austin', s:'3/2 · 1,180sf · cosmetic+roof', strat:'flip', zip:'78702', arv:'$385,000', rehab:'$62,000', profit:'$54,500', status:['New','new'], img:'assets/img/home-1.jpg'},
+  {a:'78617 · Del Valle', s:'4/2 · 1,640sf · full gut', strat:'flip', zip:'kyle', arv:'$352,000', rehab:'$88,000', profit:'$48,200', status:['New','new'], img:'assets/img/home-2.jpg'},
+  {a:'78664 · Round Rock', s:'3/2 · 1,420sf · BRRRR', strat:'rental', zip:'round-rock', arv:'$401,000', rehab:'$41,000', profit:'$39,800', status:['Under contract','uc'], img:'assets/img/home-3.jpg'},
+  {a:'78640 · Kyle', s:'4/2.5 · 2,050sf · light rehab', strat:'rental', zip:'kyle', arv:'$418,000', rehab:'$34,500', profit:'$35,600', status:['New','new'], img:'assets/img/home-4.jpg'},
+  {a:'78702 · Holly', s:'2/1 · 940sf · teardown/rebuild', strat:'flip', zip:'78702', arv:'$565,000', rehab:'$185,000', profit:'$92,000', status:['New','new'], img:'assets/img/home-5.jpg'},
+  {a:'78753 · North Lamar', s:'3/2 · 1,310sf · cosmetic', strat:'rental', zip:'round-rock', arv:'$338,000', rehab:'$29,000', profit:'$31,400', status:['Assigned','assigned'], img:'assets/img/home-6.jpg'}
+];
+function renderFeed(filter='all'){
+  const host=document.getElementById('feedRows');
+  const rows=deals.filter(d=> filter==='all' || d.strat===filter || d.zip===filter).map((d,i)=>`
+    <div class="feed-row" data-strat="${d.strat}" data-zip="${d.zip}">
+      <div class="fr-prop"><div class="fr-thumb" style="background-image:url('${d.img}')"></div>
+        <div class="fr-meta"><div class="a">${d.a}</div><div class="s">${d.s}</div></div></div>
+      <div class="fr-strat">${d.strat==='flip'?'Flip':'Rental / BRRRR'}</div>
+      <div class="fr-num r">${d.arv}</div>
+      <div class="fr-num r col-cap">${d.rehab}</div>
+      <div class="fr-num profit r">${d.profit}</div>
+      <div class="fr-status r"><span class="status ${d.status[1]}">${d.status[0]}</span></div>
+    </div>`).join('');
+  host.innerHTML = rows || `<div style="padding:40px 22px;color:var(--faint);font-family:var(--mono);font-size:13px">No deals match that filter right now — join the list and we'll text you when one lands.</div>`;
+}
+renderFeed();
+document.getElementById('filters').addEventListener('click', e=>{
+  if(!e.target.classList.contains('chip')) return;
+  document.querySelectorAll('#filters .chip').forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  renderFeed(e.target.dataset.f);
+});
+
+/* ----- nav scrolled ----- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=> nav.classList.toggle('scrolled', scrollY>20));
+
+/* ----- reveal on scroll ----- */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+},{threshold:.14, rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ----- count up ----- */
+const cu=new IntersectionObserver((es)=>{
+  es.forEach(en=>{
+    if(!en.isIntersecting) return;
+    const el=en.target, to=parseFloat(el.dataset.to), comma=el.dataset.comma, suf=el.dataset.suffix||'';
+    const dur=1100, t0=performance.now();
+    const tick=(t)=>{ const p=Math.min((t-t0)/dur,1); const e=1-Math.pow(1-p,3); let val=Math.round(to*e);
+      el.textContent=(comma?val.toLocaleString():val)+suf; if(p<1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick); cu.unobserve(el);
+  });
+},{threshold:.6});
+document.querySelectorAll('.countup').forEach(el=>cu.observe(el));
+
+/* ----- demo form ----- */
+function demoSubmit(e,kind){
+  e.preventDefault();
+  const btn=e.target.querySelector('button');
+  btn.textContent = kind==='buyer' ? '✓ You’re on the list' : '✓ Offer request received';
+  btn.style.background = kind==='buyer' ? 'var(--green-dim)' : 'transparent';
+  btn.disabled=true;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6e56">
+<title>Deal Desk — case study · Kellen Poole</title>
+<meta name="description" content="A Bloomberg-terminal-style operations dashboard for an off-market real-estate desk: a live deal feed, per-property underwriting memos, and market intelligence in one screen. A self-directed concept build with an interactive demo.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"><div class="row">
+  <a class="brand" href="/">Kellen <b>Poole</b></a>
+  <a class="back" href="/">← All projects</a>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow reveal">Operational UI · vertical tooling · rapid build</p>
+    <h1 class="reveal">Deal Desk</h1>
+    <p class="lede reveal">A Bloomberg-terminal-style operations dashboard for an off-market real-estate desk — a <b>live deal feed</b>, per-property <b>underwriting memos</b>, and <b>market intelligence</b> in one screen. Built to see how fast a polished, credible internal tool for a specific business could go from brief to working demo.</p>
+    <div class="reveal"><span class="status"><span class="dot"></span> Concept build · interactive demo · fictional sample data</span></div>
+    <p class="honest reveal" style="margin:12px 0 0">A design-and-build study, not a live service. Every name, brokerage, deal, address, and figure is <b>fictional sample data</b>; the lead forms are demo-only. It exists to demonstrate the UI, the interactions, and the data model.</p>
+    <p class="started reveal"><b>Built</b> June 2026 · self-directed</p>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="/dealdesk/" target="_blank" rel="noopener">Open interactive demo <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#build">See how it's built ↓</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="label">The problem</p>
+    <p class="prose">Off-market real-estate operators run their whole pipeline out of spreadsheets and group texts. Deals, buyer lists, and the underwriting math live in different places — so good deals go stale, and investors can't trust the numbers enough to commit. The interesting challenge: give an operator <b>one screen</b> that runs both sides of a deal like a trading desk — sourcing on one side, a vetted buyer list on the other.</p>
+  </section>
+
+  <section id="build">
+    <p class="label">What it does</p>
+    <ol class="steps">
+      <li><b>A live deal board</b> — a filterable feed of off-market properties (by strategy, ZIP, and status) showing ARV, rehab budget, and projected profit at a glance, with tabular monospace numerics like a real terminal.</li>
+      <li><b>Per-property underwriting memos</b> — each deal carries its comps, a scoped rehab budget, and <b>both</b> a flip and a rental exit, so the numbers are built to survive an inspection instead of getting re-traded.</li>
+      <li><b>A market-intelligence panel</b> — an animated distressed-inventory counter and trend chart that frame each deal against current market conditions.</li>
+      <li><b>Two-sided capture</b> — a buyer-list signup matched to a buy box, and a seller cash-offer form — the front doors of the pipeline, with compliance-aware copy throughout.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="label">The story · STAR</p>
+    <div class="star">
+      <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">Off-market real-estate operators manage sourcing, underwriting, and buyer lists across spreadsheets and blast texts. Nothing lives in one place, and the deal math isn't trustworthy enough for a cash buyer to move fast.</p></div></div>
+      <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Design and build a single "operator terminal" that runs the whole pipeline — polished enough to earn an investor's trust, and fast enough to prove in an interactive demo.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Researched an unfamiliar vertical and its compliance constraints, designed the information architecture and data model (deals, memos, buyer buy-boxes), then built the full front end: a filterable live deal feed, per-property underwriting memos, an animated market-intel panel with an SVG trend chart, and two-sided lead capture — in an information-dense "terminal × editorial" aesthetic. Verified on desktop and mobile.</p></div></div>
+      <div class="star-row"><div class="glyph">R</div><div><p class="k">Result</p><p class="t">A working, interactive demo of a vertical operational tool that reads like a real product. It shows I can take a domain I don't start out knowing, model its workflow, and ship a credible internal tool quickly — self-directed, with AI-assisted development.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Try it in 20 seconds</p>
+    <ol class="steps">
+      <li><b>Open the demo</b> — it loads on a live-looking deal board, badged as sample data.<span class="sub">No login, no real listings.</span></li>
+      <li><b>Filter the board</b> — tap Flip, Rental/BRRRR, or a ZIP chip and watch the feed re-render.</li>
+      <li><b>Read an underwriting memo</b> and watch the <b>market-intel counter</b> animate, then submit a demo buyer/seller form.</li>
+    </ol>
+    <div class="actions"><a class="btn btn-primary" href="/dealdesk/" target="_blank" rel="noopener">Open interactive demo <span class="arr">→</span></a></div>
+  </section>
+
+  <section>
+    <p class="label">Built with</p>
+    <div class="pills"><span class="pill">HTML5</span><span class="pill">CSS design system</span><span class="pill">Vanilla JS</span><span class="pill">IntersectionObserver</span><span class="pill">SVG charts</span><span class="pill">responsive</span><span class="pill">compliance-aware copy</span></div>
+  </section>
+
+  <section>
+    <p class="label">Status &amp; honest limitations</p>
+    <div class="callout">
+      <p class="prose" style="margin:0"><b>Interactive front-end demo, deployed.</b> The deal board, filtering, memos, market charts, and forms all work on fictional sample data.</p>
+      <ul>
+        <li>It's a <b>concept build</b> — there's no live backend and no real listings; the buyer/seller forms are demo-only.</li>
+        <li>The market figures are <b>illustrative</b>, drawn from public Austin housing context, not a live data feed.</li>
+        <li>The design intentionally models real compliance (equitable-interest disclosure, broker-identified advertising) to show the tool could be built the legitimate way.</li>
+      </ul>
+    </div>
+    <p class="honest" style="margin-top:14px">Self-directed project, built with AI-assisted development. All names, brokerages, deals, and figures are fictional.</p>
+  </section>
+
+  <section>
+    <p class="label">Design note</p>
+    <p class="prose">The direction is <b>"operator terminal × editorial"</b> — Bloomberg-terminal precision with editorial confidence, and zero real-estate fluff. A near-black canvas, a single signal-green for live and positive figures, monospace for every number, and one editorial serif for headlines. The goal was an interface a numbers-driven investor would immediately read as credible.</p>
+  </section>
+</div>
+
+<footer><div class="wrap">Deal Desk · part of <a href="/">Kellen Poole's portfolio</a> · <a href="/dealdesk/" target="_blank" rel="noopener">interactive demo</a></div></footer>
+</body>
+</html>
