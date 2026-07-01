@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0f6e56">
 <title>Deal Desk — case study · Kellen Poole</title>
-<meta name="description" content="A Bloomberg-terminal-style operations dashboard for an off-market real-estate desk: a live deal feed, per-property underwriting memos, and market intelligence in one screen. A self-directed concept build with an interactive demo.">
+<meta name="description" content="A Bloomberg-terminal-style operations dashboard for an off-market real-estate desk — plus an AI deal-sheet generator that turns one deal into a card, a memo, and a buyer-blast email using Claude via Supabase Edge Functions. Self-directed build.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -20,7 +20,7 @@
   <header class="hero">
     <p class="eyebrow reveal">Operational UI · vertical tooling · rapid build</p>
     <h1 class="reveal">Deal Desk</h1>
-    <p class="lede reveal">A Bloomberg-terminal-style operations dashboard for an off-market real-estate desk — a <b>live deal feed</b>, per-property <b>underwriting memos</b>, and <b>market intelligence</b> in one screen. Built to see how fast a polished, credible internal tool for a specific business could go from brief to working demo.</p>
+    <p class="lede reveal">A Bloomberg-terminal-style operations dashboard for an off-market real-estate desk — a <b>live deal feed</b>, <b>underwriting memos</b>, and <b>market intel</b> in one screen — backed by an <b>AI deal-sheet generator</b> that drafts a card, a memo, and a buyer email from a three-sentence note. Built to see how fast a credible internal tool for a specific business could go from brief to working software.</p>
     <div class="reveal"><span class="status"><span class="dot"></span> Concept build · interactive demo · fictional sample data</span></div>
     <p class="honest reveal" style="margin:12px 0 0">A design-and-build study, not a live service. Every name, brokerage, deal, address, and figure is <b>fictional sample data</b>; the lead forms are demo-only. It exists to demonstrate the UI, the interactions, and the data model.</p>
     <p class="started reveal"><b>Built</b> June 2026 · self-directed</p>
@@ -46,11 +46,32 @@
   </section>
 
   <section>
+    <p class="label">The engine · an AI deal-sheet generator</p>
+    <p class="prose">Behind the terminal is the tool the operator actually lives in. Paste a three-sentence note about a house and it produces three things in seconds: a <b>deal card</b> for the board, a printable <b>underwriting memo</b>, and a ready-to-send <b>buyer-blast email</b>. The money math is <b>deterministic</b> — projected profit, cap rate, and the 70% rule are computed in code, never guessed — while <b>Claude</b> drafts the fields from the note and polishes the prose in brand voice, leaving every number untouched.</p>
+
+    <figure class="shot reveal">
+      <img src="dealdesk/gen-card.png" alt="Deal-sheet generator — money inputs on the left, a generated deal card on the right" loading="lazy">
+      <figcaption>Type the numbers once — profit, cap rate, and the 70% rule compute live — and a deal card renders with a copy-paste row for the live board.</figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <img src="dealdesk/gen-memo.png" alt="Generated underwriting memo with a metrics grid and the 70% rule math" loading="lazy">
+      <figcaption>The same deal as a printable underwriting memo — comps, scoped rehab, and the max-allowable-offer math spelled out so it survives an inspection.</figcaption>
+    </figure>
+    <figure class="shot reveal">
+      <img src="dealdesk/gen-email.png" alt="Generated buyer-blast email with subject line, underwriting rows, and a call to action" loading="lazy">
+      <figcaption>And as a buyer-blast email — subject, formatted HTML body, and a plain-text version — ready to send to a matched buyer.</figcaption>
+    </figure>
+
+    <p class="prose" style="margin-top:18px"><b>The AI never sees a secret.</b> Both the drafting and the sending run through <b>Supabase Edge Functions</b>, so the Anthropic and email keys stay server-side — the browser only invokes a function. A separate operator <b>lead dashboard</b> is gated by <b>row-level security</b> in Postgres: the login screen is just UX, the database itself only returns leads to the authenticated operator. With no backend configured, the tool degrades gracefully to templated copy, fully offline.</p>
+    <p class="honest" style="margin-top:12px">This generator is an internal operator tool, shown here as a case study — it isn't wired into the public demo above.</p>
+  </section>
+
+  <section>
     <p class="label">The story · STAR</p>
     <div class="star">
       <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">Off-market real-estate operators manage sourcing, underwriting, and buyer lists across spreadsheets and blast texts. Nothing lives in one place, and the deal math isn't trustworthy enough for a cash buyer to move fast.</p></div></div>
       <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Design and build a single "operator terminal" that runs the whole pipeline — polished enough to earn an investor's trust, and fast enough to prove in an interactive demo.</p></div></div>
-      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Researched an unfamiliar vertical and its compliance constraints, designed the information architecture and data model (deals, memos, buyer buy-boxes), then built the full front end: a filterable live deal feed, per-property underwriting memos, an animated market-intel panel with an SVG trend chart, and two-sided lead capture — in an information-dense "terminal × editorial" aesthetic. Verified on desktop and mobile.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Researched an unfamiliar vertical and its compliance constraints, designed the information architecture and data model (deals, memos, buyer buy-boxes), then built the full front end: a filterable live deal feed, per-property underwriting memos, an animated market-intel panel with an SVG trend chart, and two-sided lead capture. Then built the operator's daily driver: an AI deal-sheet generator that turns a short note into a deal card, memo, and buyer email — with Claude proxied through Supabase Edge Functions so no key ever ships to the browser, and an RLS-gated lead dashboard behind it. Verified on desktop and mobile.</p></div></div>
       <div class="star-row"><div class="glyph">R</div><div><p class="k">Result</p><p class="t">A working, interactive demo of a vertical operational tool that reads like a real product. It shows I can take a domain I don't start out knowing, model its workflow, and ship a credible internal tool quickly — self-directed, with AI-assisted development.</p></div></div>
     </div>
   </section>
@@ -67,7 +88,7 @@
 
   <section>
     <p class="label">Built with</p>
-    <div class="pills"><span class="pill">HTML5</span><span class="pill">CSS design system</span><span class="pill">Vanilla JS</span><span class="pill">IntersectionObserver</span><span class="pill">SVG charts</span><span class="pill">responsive</span><span class="pill">compliance-aware copy</span></div>
+    <div class="pills"><span class="pill">HTML5</span><span class="pill">CSS design system</span><span class="pill">Vanilla JS</span><span class="pill">Anthropic Claude API</span><span class="pill">Supabase Edge Functions</span><span class="pill">Supabase Auth + RLS</span><span class="pill">EmailJS</span><span class="pill">SVG charts</span><span class="pill">responsive</span></div>
   </section>
 
   <section>
